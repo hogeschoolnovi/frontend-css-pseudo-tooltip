@@ -2,14 +2,55 @@
 
 /* ------------------------------- Styling voor opdracht 1 en 2  -------------------------------- */
 
-/* Schrijf hier jouw CSS... */
+.compliment p::before,
+.compliment p::after {
+    display: inline;
+    content: '\0022';
+}
 
+footer p::after {
+    display: inline;
+    content: ' \00a9';
+}
 
+/* Het before-element is het balkje met tekst*/
+.highlight:hover::before {
+    /* We gebruiken block zodat het before element erboven komt te staan (en dus niet aan de linkerkant) */
+    display: block;
+    content: 'Dit is een latijns woord';
 
+    background-color: hsl(29, 100%, 47%);
+    color: white;
+    border-radius: 4px;
+    font-weight: 300;
+    padding: 4px;
+    width: 200px;
 
+    /* We zetten deze precies boven het woord, en boven de andere tekst */
+    position: absolute;
+    top: -35px;
+    z-index: 1;
+    /*het balkje is 200px lang, dus wanneer we deze op 50% van het span element plaatsen, moet deze wel weer 100px naar links*/
+    left: calc(50% - 100px);
+}
 
+/* Het after-element is het driehoekje */
+.highlight:hover::after {
+    content: '';
+    /* We gebruiken block zodat het before element eronder komt te staan (en dus niet aan de rechterkant) */
+    display: block;
 
+    border-top: 10px solid hsl(29, 100%, 47%);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
 
+    /* We zetten deze precies in het midden van het woord, en boven de andere tekst */
+    position: absolute;
+    bottom: 18px;
+    z-index: 1;
+    /*het balkje is 10px lang, dus wanneer we deze op 50% van het span element plaatsen, moet deze wel weer 5px naar links*/
+    left: calc(50% - 5px);
+}
 
 /* ------------------------------- Base Styles: don't change this!  -------------------------------- */
 
